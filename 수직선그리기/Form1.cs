@@ -13,6 +13,7 @@ namespace 수직선그리기
 	public partial class Form1 : Form
 	{
 		int y;
+		Bitmap _도화지;
 
 		public Form1()
 		{
@@ -21,22 +22,12 @@ namespace 수직선그리기
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-
+			_도화지 = new Bitmap(this.Width, this.Height);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			for (int x = 0; x < 100; x++)
-			{
-				e.Graphics.DrawLine(
-					Pens.Black,
-					x*2,
-					y,
-					x*2,
-					y + 50
-				);
-			}
-			y++;
+			e.Graphics.DrawImage(_도화지, 0, 0);
 		}
 
 		protected override void OnPaintBackground(PaintEventArgs e)
@@ -46,6 +37,21 @@ namespace 수직선그리기
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
+			Graphics g = Graphics.FromImage(_도화지);
+			g.Clear(Color.White);
+
+			for (int x = 0; x < 100; x++)
+			{
+				g.DrawLine(
+					Pens.Black,
+					x * 2,
+					y,
+					x * 2,
+					y + 50
+				);
+			}
+			y++;
+
 			Invalidate();
 		}
 	}
