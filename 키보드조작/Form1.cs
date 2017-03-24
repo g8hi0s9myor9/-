@@ -19,7 +19,22 @@ namespace 키보드조작
 
 		private void Form1_KeyDown(object sender, KeyEventArgs e)
 		{
-			MessageBox.Show("키보드가 눌러졌습니다.");
+			if(e.KeyCode == Keys.Left)
+			{
+				textBox1.Left--;
+			}
+			if(e.KeyCode == Keys.Right)
+			{
+				textBox1.Left++;
+			}
+			if(e.KeyCode == Keys.Up)
+			{
+				textBox1.Top--;
+			}
+			if(e.KeyCode == Keys.Down)
+			{
+				textBox1.Top++;
+			}
 		}
 	}
 }
