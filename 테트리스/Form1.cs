@@ -30,7 +30,7 @@ namespace 테트리스
 			_grid[1, 1] = 1;
 			_grid[1, 2] = 1;
 
-			_grid = shift(_grid, 0, 5);
+			_grid = shift(_grid, -1, 5);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -68,6 +68,8 @@ namespace 테트리스
 
 		int[,] shift(int[,] grid, int x, int y)
 		{
+			int sum_grid = sum(grid);
+
 			int rows = grid.GetLength(0);
 			int cols = grid.GetLength(1);
 			int[,] clone = new int[rows, cols];
@@ -84,7 +86,26 @@ namespace 테트리스
 				}
 			}
 
-			return clone;
+			int sum_clone = sum(clone);
+			if (sum_grid == sum_clone) return clone;
+			else return grid;
+		}
+
+		int sum(int[,] arr)
+		{
+			int rows = arr.GetLength(0);
+			int cols = arr.GetLength(1);
+			int i = 0;
+
+			for (int r = 0; r < rows; r++)
+			{
+				for (int c = 0; c < cols; c++)
+				{
+					i += arr[r, c];
+				}
+			}
+
+			return i;
 		}
 	}
 }
