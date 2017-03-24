@@ -13,6 +13,7 @@ namespace 테트리스
 	public partial class Form1 : Form
 	{
 		Tetris _tt;
+		Bitmap _buff;
 		bool _left, _right, _up, _down;
 
 		public Form1()
@@ -23,11 +24,17 @@ namespace 테트리스
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			_tt = new Tetris();
+			_buff = new Bitmap(this.Width, this.Height);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			_tt.draw(e.Graphics);
+			e.Graphics.DrawImage(_buff, 0, 0);
+		}
+
+		protected override void OnPaintBackground(PaintEventArgs e)
+		{
+			
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
@@ -37,14 +44,20 @@ namespace 테트리스
 			if (_right) x++;
 			if (_up) y--;
 			if (_down) y++;
-
 			_tt._grid = _tt.shift(_tt._grid, x, y);
+
+			Graphics g = Graphics.FromImage(_buff);
+			g.Clear(Color.White);
+			_tt.draw(g);
+
 			Invalidate();
 		}
 
+		#region Form1_KeyDown(), Form1_KeyUp()
+
 		private void Form1_KeyDown(object sender, KeyEventArgs e)
 		{
-			switch(e.KeyCode)
+			switch (e.KeyCode)
 			{
 				case Keys.Left:
 					_left = true;
@@ -80,5 +93,7 @@ namespace 테트리스
 			}
 
 		}
+
+		#endregion
 	}
 }
