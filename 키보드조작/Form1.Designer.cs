@@ -44,6 +44,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(284, 262);
 			this.Controls.Add(this.textBox1);
+			this.KeyPreview = true;
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
