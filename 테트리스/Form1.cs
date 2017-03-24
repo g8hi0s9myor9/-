@@ -14,6 +14,7 @@ namespace 테트리스
 	{
 		int[,] _grid = new int[20, 10];
 		int _blockSize = 20;
+		bool _left, _right, _up, _down;
 
 		public Form1()
 		{
@@ -29,9 +30,9 @@ namespace 테트리스
 			_grid[1, 0] = 0;
 			_grid[1, 1] = 1;
 			_grid[1, 2] = 1;
-
-			_grid = shift(_grid, -1, 5);
 		}
+
+		#region OnPaint(), shift(), sum()
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
@@ -42,14 +43,14 @@ namespace 테트리스
 			{
 				for (int c = 0; c < cols; c++)
 				{
-					if(_grid[r,c] != 0)
+					if (_grid[r, c] != 0)
 					{
 						e.Graphics.FillRectangle(
 							Brushes.Black,
-							c*_blockSize,
-							r*_blockSize,
+							c * _blockSize,
+							r * _blockSize,
 							_blockSize,
-							_blockSize	
+							_blockSize
 						);
 					}
 					else
@@ -76,7 +77,7 @@ namespace 테트리스
 
 			for (int r = 0; r < rows; r++)
 			{
-				if(r+y < 0 || r+y >= rows) continue;
+				if (r + y < 0 || r + y >= rows) continue;
 
 				for (int c = 0; c < cols; c++)
 				{
@@ -106,6 +107,59 @@ namespace 테트리스
 			}
 
 			return i;
+		}
+
+		#endregion
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			int x = 0, y = 0;
+			if (_left) x--;
+			if (_right) x++;
+			if (_up) y--;
+			if (_down) y++;
+
+			_grid = shift(_grid, x, y);
+			Invalidate();
+		}
+
+		private void Form1_KeyDown(object sender, KeyEventArgs e)
+		{
+			switch(e.KeyCode)
+			{
+				case Keys.Left:
+					_left = true;
+					break;
+				case Keys.Right:
+					_right = true;
+					break;
+				case Keys.Up:
+					_up = true;
+					break;
+				case Keys.Down:
+					_down = true;
+					break;
+			}
+		}
+
+		private void Form1_KeyUp(object sender, KeyEventArgs e)
+		{
+			switch (e.KeyCode)
+			{
+				case Keys.Left:
+					_left = false;
+					break;
+				case Keys.Right:
+					_right = false;
+					break;
+				case Keys.Up:
+					_up = false;
+					break;
+				case Keys.Down:
+					_down = false;
+					break;
+			}
+
 		}
 	}
 }
