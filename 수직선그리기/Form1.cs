@@ -39,6 +39,11 @@ namespace 수직선그리기
 			y++;
 		}
 
+		protected override void OnPaintBackground(PaintEventArgs e)
+		{
+			
+		}
+
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			Invalidate();
