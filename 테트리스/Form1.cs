@@ -22,7 +22,13 @@ namespace 테트리스
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			_grid[0, 0] = 1;
+			_grid[0, 1] = 1;
+			_grid[0, 2] = 0;
 
+			_grid[1, 0] = 0;
+			_grid[1, 1] = 1;
+			_grid[1, 2] = 1;
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -34,13 +40,26 @@ namespace 테트리스
 			{
 				for (int c = 0; c < cols; c++)
 				{
-					e.Graphics.DrawRectangle(
-						Pens.Black,
-						c*_blockSize,
-						r*_blockSize,
-						_blockSize,
-						_blockSize	
-					);
+					if(_grid[r,c] != 0)
+					{
+						e.Graphics.FillRectangle(
+							Brushes.Black,
+							c*_blockSize,
+							r*_blockSize,
+							_blockSize,
+							_blockSize	
+						);
+					}
+					else
+					{
+						e.Graphics.DrawRectangle(
+							Pens.Black,
+							c * _blockSize,
+							r * _blockSize,
+							_blockSize,
+							_blockSize
+						);
+					}
 				}
 			}
 		}
