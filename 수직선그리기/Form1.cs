@@ -12,6 +12,8 @@ namespace 수직선그리기
 {
 	public partial class Form1 : Form
 	{
+		int y;
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -29,11 +31,17 @@ namespace 수직선그리기
 				e.Graphics.DrawLine(
 					Pens.Black,
 					x*2,
-					0,
+					y,
 					x*2,
-					50	
+					y + 50
 				);
 			}
+			y++;
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			Invalidate();
 		}
 	}
 }
