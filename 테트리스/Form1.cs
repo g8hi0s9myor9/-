@@ -27,6 +27,11 @@ namespace 테트리스
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
+			draw(e.Graphics);
+		}
+
+		void draw(Graphics g)
+		{
 			int rows = _tt._grid.GetLength(0);
 			int cols = _tt._grid.GetLength(1);
 
@@ -36,7 +41,7 @@ namespace 테트리스
 				{
 					if (_tt._grid[r, c] != 0)
 					{
-						e.Graphics.FillRectangle(
+						g.FillRectangle(
 							Brushes.Black,
 							c * _tt._blockSize,
 							r * _tt._blockSize,
@@ -46,7 +51,7 @@ namespace 테트리스
 					}
 					else
 					{
-						e.Graphics.DrawRectangle(
+						g.DrawRectangle(
 							Pens.Black,
 							c * _tt._blockSize,
 							r * _tt._blockSize,
