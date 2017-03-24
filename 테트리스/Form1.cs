@@ -27,40 +27,7 @@ namespace 테트리스
 
 		protected override void OnPaint(PaintEventArgs e)
 		{
-			draw(e.Graphics);
-		}
-
-		void draw(Graphics g)
-		{
-			int rows = _tt._grid.GetLength(0);
-			int cols = _tt._grid.GetLength(1);
-
-			for (int r = 0; r < rows; r++)
-			{
-				for (int c = 0; c < cols; c++)
-				{
-					if (_tt._grid[r, c] != 0)
-					{
-						g.FillRectangle(
-							Brushes.Black,
-							c * _tt._blockSize,
-							r * _tt._blockSize,
-							_tt._blockSize,
-							_tt._blockSize
-						);
-					}
-					else
-					{
-						g.DrawRectangle(
-							Pens.Black,
-							c * _tt._blockSize,
-							r * _tt._blockSize,
-							_tt._blockSize,
-							_tt._blockSize
-						);
-					}
-				}
-			}
+			_tt.draw(e.Graphics);
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)

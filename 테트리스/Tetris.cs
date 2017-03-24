@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,39 @@ namespace 테트리스
 			}
 
 			return i;
+		}
+
+		public void draw(Graphics g)
+		{
+			int rows = _grid.GetLength(0);
+			int cols = _grid.GetLength(1);
+
+			for (int r = 0; r < rows; r++)
+			{
+				for (int c = 0; c < cols; c++)
+				{
+					if (_grid[r, c] != 0)
+					{
+						g.FillRectangle(
+							Brushes.Black,
+							c * _blockSize,
+							r * _blockSize,
+							_blockSize,
+							_blockSize
+						);
+					}
+					else
+					{
+						g.DrawRectangle(
+							Pens.Black,
+							c * _blockSize,
+							r * _blockSize,
+							_blockSize,
+							_blockSize
+						);
+					}
+				}
+			}
 		}
 	}
 }
