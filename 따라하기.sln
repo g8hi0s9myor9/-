@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "수직선그리기", "수�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "키보드조작", "키보드조작\키보드조작.csproj", "{79A33A34-C849-43FF-992C-AA015C427C53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "테트리스", "테트리스\테트리스.csproj", "{05C14850-8161-4BDB-83CA-872F17B22B70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{79A33A34-C849-43FF-992C-AA015C427C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A33A34-C849-43FF-992C-AA015C427C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79A33A34-C849-43FF-992C-AA015C427C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C14850-8161-4BDB-83CA-872F17B22B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C14850-8161-4BDB-83CA-872F17B22B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C14850-8161-4BDB-83CA-872F17B22B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C14850-8161-4BDB-83CA-872F17B22B70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
