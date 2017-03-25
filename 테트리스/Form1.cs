@@ -25,6 +25,13 @@ namespace 테트리스
 		{
 			_tt = new Tetris();
 			_buff = new Bitmap(this.Width, this.Height);
+
+			int[,] blk =
+			{
+				{ 1, 1, 0 },
+				{ 0, 1, 1 }
+			};
+			_tt.add_block(blk, 5, 0);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)

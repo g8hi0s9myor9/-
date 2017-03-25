@@ -14,13 +14,21 @@ namespace 테트리스
 
 		public Tetris()
 		{
-			_grid[0, 0] = 1;
-			_grid[0, 1] = 1;
-			_grid[0, 2] = 0;
 
-			_grid[1, 0] = 0;
-			_grid[1, 1] = 1;
-			_grid[1, 2] = 1;
+		}
+
+		public void add_block(int[,] blk, int x, int y)
+		{
+			int rows = blk.GetLength(0);
+			int cols = blk.GetLength(1);
+
+			for (int r = 0; r < rows; r++)
+			{
+				for (int c = 0; c < cols; c++)
+				{
+					_grid[r + y, c + x] = blk[r, c];
+				}
+			}
 		}
 
 		public int[,] shift(int[,] grid, int x, int y)
