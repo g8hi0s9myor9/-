@@ -24,6 +24,7 @@ namespace 테트리스
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			_tt = new Tetris();
+			_tt.add_block();
 			_buff = new Bitmap(this.Width, this.Height);
 		}
 
@@ -44,9 +45,10 @@ namespace 테트리스
 			if (_right) x++;
 			if (_up) y--;
 			if (_down) y++;
-			if(_tt.shift(x, y) && _down)
+			if(!_tt.shift(x, y) && _down)
 			{
-				Console.WriteLine(".");
+				_tt.merge();
+				_tt.add_block();
 			}
 
 			Graphics g = Graphics.FromImage(_buff);
