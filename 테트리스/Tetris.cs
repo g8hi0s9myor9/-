@@ -9,8 +9,8 @@ namespace 테트리스
 {
 	class Tetris
 	{
-		public int[,] _grid = new int[20, 10];
-		public int _blockSize = 20;
+		int[,] _grid = new int[20, 10];
+		int _blockSize = 20;
 
 		public Tetris()
 		{
@@ -23,12 +23,12 @@ namespace 테트리스
 			_grid[1, 2] = 1;
 		}
 
-		public int[,] shift(int[,] grid, int x, int y)
+		public void shift(int x, int y)
 		{
-			int sum_grid = sum(grid);
+			int sum_grid = sum(_grid);
 
-			int rows = grid.GetLength(0);
-			int cols = grid.GetLength(1);
+			int rows = _grid.GetLength(0);
+			int cols = _grid.GetLength(1);
 			int[,] clone = new int[rows, cols];
 
 			for (int r = 0; r < rows; r++)
@@ -39,13 +39,15 @@ namespace 테트리스
 				{
 					if (c + x < 0 || c + x >= cols) continue;
 
-					clone[r + y, c + x] = grid[r, c];
+					clone[r + y, c + x] = _grid[r, c];
 				}
 			}
 
 			int sum_clone = sum(clone);
-			if (sum_grid == sum_clone) return clone;
-			else return grid;
+			if (sum_grid == sum_clone)
+			{
+				_grid = clone;
+			}
 		}
 
 		int sum(int[,] arr)
@@ -99,3 +101,5 @@ namespace 테트리스
 		}
 	}
 }
+
+//todo shift() public 없애기
