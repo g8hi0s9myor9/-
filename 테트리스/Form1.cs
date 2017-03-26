@@ -44,7 +44,10 @@ namespace 테트리스
 			if (_right) x++;
 			if (_up) y--;
 			if (_down) y++;
-			_tt.shift(x, y);
+			if(_tt.shift(x, y) && _down)
+			{
+				Console.WriteLine(".");
+			}
 
 			Graphics g = Graphics.FromImage(_buff);
 			g.Clear(Color.White);

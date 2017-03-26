@@ -23,7 +23,7 @@ namespace 테트리스
 			_grid[1, 2] = 1;
 		}
 
-		public void shift(int x, int y)
+		public bool shift(int x, int y)
 		{
 			int sum_grid = sum(_grid);
 
@@ -47,6 +47,11 @@ namespace 테트리스
 			if (sum_grid == sum_clone)
 			{
 				_grid = clone;
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
 
